@@ -1,0 +1,18 @@
+doctype html 
+html 
+  head 
+    meta(charset="utf-8")
+    link(rel="stylesheet", href="css/style.css")
+    script(defer src="js/script-base.js")
+    //- script(defer src="js/script-xhr.js")
+    //- script(defer src="js/script-xhr-cont.js")
+    //- script(defer src="js/script-promise.js")
+    //- script(defer src="js/script-fetch.js")
+    script(defer src="js/script-await.js")
+  body
+    div
+      input(type="text", id="search-input", placeholder="nom ou id du Pokémon")
+    div
+      button#button1 Ajouter pokémon
+      button#button2 Ajouter évolutions
+    #pokemon-list
