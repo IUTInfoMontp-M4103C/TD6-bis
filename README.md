@@ -9,7 +9,7 @@
 
 Cliquez sur le lien ci-dessous pour faire votre fork privé du TD6 Bis (**attention, pas de fork à la main !**):
 
-**TODO:** lien classroom
+[https://classroom.github.com/a/mcHiaX1I](https://classroom.github.com/a/mcHiaX1I)
 
 ## Introduction
 
