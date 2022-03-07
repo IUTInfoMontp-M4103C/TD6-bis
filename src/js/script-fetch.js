@@ -1,10 +1,10 @@
-// Version moderne avec fetch (qui renvoie une promesse)
 function addPokemon(nameOrIndex) {
     fetch(`${ROOT_URL}/pokemon/${nameOrIndex}`)
         .then(response => response.json())
         .then(data => addPokemonCard(data))
         .catch(error => console.log(error));
 }
+
 
 function addEvolutionChain(nameOrIndex) {
     fetch(`${ROOT_URL}/pokemon/${nameOrIndex}/`)

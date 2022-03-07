@@ -1,4 +1,3 @@
-// Version plus simple avec .onload (uniquement lorsque readyState = 4)
 function addPokemon(nameOrIndex) {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', `${ROOT_URL}/pokemon/${nameOrIndex}`, true);
@@ -12,6 +11,7 @@ function addPokemon(nameOrIndex) {
     }
     xhr.send();
 }
+
 
 function addEvolutionChain(nameOrIndex) {
     const xhr1 = new XMLHttpRequest();
