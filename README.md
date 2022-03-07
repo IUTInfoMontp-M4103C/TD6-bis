@@ -1,4 +1,5 @@
-# ![](ressources/logo.jpg) Prog web client riche - JavaScript
+![](ressources/logo.jpg)
+# Prog web client riche - JavaScript
 
 ### IUT Montpellier-Sète - Département Informatique
 
@@ -219,12 +220,11 @@ p.then(value => {
 
 On peut également appeler la méthode `catch` d'une promesse qui prend en argument une fonction qui décrit les actions à exécuter si la promesse a échoué (si elle a appelé `reject(erreur)`.
 
-
 2. Ouvrez le fichier `script-promise.js` et étudiez la fonction `getData(url)`.
     
     **Indication :** Cette fonction renvoie une promesse qui crée un `XMLHttpRequest` pour faire une requête sur l'URL passé en argument. Lorsque la réponse à la requête est obtenue, s'il n'y a pas eu d'erreur la promesse est résolue et la valeur de la promesse est l'objet représenté par la réponse à la requête. S'il y a eu une erreur, la promesse échoue en transmettant le message d'erreur de la requête.
 
-3. En vous inspirant de la fonction `addPokemon(nameOrIndex)` (du fichier `script-promise.js`), écrivez la fonction `addEvolutionChain(nameOrIndex)` en utilisant des promesses.
+3. En vous inspirant de la fonction `addPokemon(nameOrIndex)` (du fichier `script-promise.js`), écrivez la fonction `addEvolutionChain(nameOrIndex)` en utilisant des promesses (modifiez le *header* du fichier `index.html` pour qu'il appelle `script-promise.js` au lieu de `script-xhr.js`)
     
     **Indication :** Les étapes sont exactement les mêmes que pour la version avec des `XMLHttpRequest` mais le code devrait être bien plus clair et concis car vous pouvez enchaîner les différentes étapes à l'aide de la méthode `then` :
 
@@ -254,7 +254,7 @@ fetch("http:// ... /")
     });
 ```
 
-4. Dans le fichier `script-fetch.js`, en vous inspirant de la fonction `addPokemon(nameOrIndex)`, écrivez la fonction `addEvolutionChain(nameOrIndex)` en utilisant la fonction `fetch` (et la méthode `.json()` pour décoder les réponses aux requêtes).
+4. Dans le fichier `script-fetch.js`, en vous inspirant de la fonction `addPokemon(nameOrIndex)`, écrivez la fonction `addEvolutionChain(nameOrIndex)` en utilisant la fonction `fetch` et la méthode `.json()` pour décoder les réponses aux requêtes (modifiez le *header* du fichier `index.html` pour qu'il appelle `script-fetch.js`).
 
 
 ## Async / Await
@@ -301,7 +301,7 @@ async function get(url) {
 }
 ```
 
-5. Dans le fichier `script-await.js`, en vous inspirant de la fonction `addPokemon(nameOrIndex)`, écrivez la fonction asynchrone `addEvolutionChain(nameOrIndex)` en utilisant `await`.
+5. Dans le fichier `script-await.js`, en vous inspirant de la fonction `addPokemon(nameOrIndex)`, écrivez la fonction asynchrone `addEvolutionChain(nameOrIndex)` en utilisant `await` (modifiez le *header* du fichier `index.html` pour qu'il appelle `script-await.js`).
    
    **Indication :** Vous pouvez utiliser `fetch()` et `.json()` comme si c'étaient des fonctions séquentielles en utilisant le mot clé `await` (le code de la fonction attend que le résultat soit disponible avant de continuer, mais la fonction ne bloque pas l'exécution d'autres parties du code qui pourraient s'exécuter en parallèle (par exemple la gestion d'événements, ou d'autres fonction asynchrones)
 
