@@ -20,25 +20,23 @@ Nous utiliserons [l'API Pokémon](https://pokeapi.co) qui permet d'obtenir des i
     - `https://pokeapi.co/api/v2/pokemon/{id or name}/`
     ```json
     {
-        id: 6,
-        is_default: true,
-        name: "charizard",
-        species: {name: "charizard", url: "https://pokeapi.co/api/v2/pokemon-species/6/"},
-        sprites: {
-            front_default: "https:// ... /pokemon/6.png",
-            ...
+        "id": 6,
+        "is_default": true,
+        "name": "charizard",
+        "species": {"name": "charizard", "url": "https://pokeapi.co/api/v2/pokemon-species/6/"},
+        "sprites": {
+            "front_default": "https:// ... /pokemon/6.png",
         },
-        types: [
+        "types": [
             {
-                slot: 1, 
-                type: {name: "fire", url: "https://pokeapi.co/api/v2/type/10/"}
+                "slot": 1, 
+                "type": {"name": "fire", "url": "https://pokeapi.co/api/v2/type/10/"}
             },
             {
-                slot: 2, 
-                type: {name: "flying", url: "https://pokeapi.co/api/v2/type/3/"}
+                "slot": 2, 
+                "type": {"name": "flying", "url": "https://pokeapi.co/api/v2/type/3/"}
             },
         ],
-        ...
     }
     ```
 
@@ -47,21 +45,19 @@ Nous utiliserons [l'API Pokémon](https://pokeapi.co) qui permet d'obtenir des i
     - Il peut y avoir plusieurs *pokémon* de la même *espèce*. Par exemple l'espèce *charizard* correspond aux *pokémon* *charizard*, *charizard-mega-x*, *charizard-mega-y* et *charizard-gmax*
     ```json
     {
-        evolution_chain: {url: "https://pokeapi.co/api/v2/evolution-chain/2/"},
-        evolves_from_species: {url: "https://pokeapi.co/api/v2/evolution-chain/2/"},
-        name: "charizard",
-        varieties: [
+        "evolution_chain": {"url": "https://pokeapi.co/api/v2/evolution-chain/2/"},
+        "evolves_from_species": {"url": "https://pokeapi.co/api/v2/evolution-chain/2/"},
+        "name": "charizard",
+        "varieties": [
             {
-                is_default: true,
-                pokemon: {name: "charizard", url: "https://pokeapi.co/api/v2/pokemon/6/"}
+                "is_default": true,
+                "pokemon": {"name": "charizard", "url": "https://pokeapi.co/api/v2/pokemon/6/"}
             },
             {
-                is_default: false,
-                pokemon: {name: "charizard-mega-x", url: "https://pokeapi.co/api/v2/pokemon/10034/"}
+                "is_default": false,
+                "pokemon": {"name": "charizard-mega-x", "url": "https://pokeapi.co/api/v2/pokemon/10034/"}
             },
-            ...
         ],
-        ...
     }
     ```
 
@@ -70,24 +66,26 @@ Nous utiliserons [l'API Pokémon](https://pokeapi.co) qui permet d'obtenir des i
     - Représente un arbre d'espèces. Chaque nœud a un attribut `species` qui représente une espèce et un attribute `evolves_to` qui contient une liste des nœuds correspondant aux évolutions possibles de l'espèce (la liste est vide si l'espèce n'a pas d'évolution possible).
     ```json
     {
-        id: 2,
-        chain: {
-            species: {
-                name: "charmander", 
-                url: "https://pokeapi.co/api/v2/pokemon-species/4/",
+        "id": 2,
+        "chain": {
+            "species": {
+                "name": "charmander", 
+                "url": "https://pokeapi.co/api/v2/pokemon-species/4/",
             },
-            evolves_to: [
+            "evolves_to": [
                 {
-                    species: {
-                        name: "charmeleon",
-                        url: "https://pokeapi.co/api/v2/pokemon-species/5/",
+                    "species": {
+                        "name": "charmeleon",
+                        "url": "https://pokeapi.co/api/v2/pokemon-species/5/",
                     },
-                    evolves_to: [
-                        species: {
-                            name: "charizard",
-                            url: "https://pokeapi.co/api/v2/pokemon-species/6/",
+                    "evolves_to": [
+                        {
+                            "species": {
+                                "name": "charizard",
+                                "url": "https://pokeapi.co/api/v2/pokemon-species/6/",
+                            },
+                            "evolves_to": [],
                         }
-                        evolves_to: [],
                     ],
                 },
             ],
