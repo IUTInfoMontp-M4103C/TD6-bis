@@ -1,6 +1,6 @@
 # ![](ressources/logo.jpg) Prog web client riche - JavaScript
 
-### IUT Montpellier-Sète – Département Informatique
+### IUT Montpellier-Sète - Département Informatique
 
 ## TD6 Bis
 
@@ -14,7 +14,7 @@ Cliquez sur le lien ci-dessous pour faire votre fork privé du TD6 Bis (**attent
 
 Nous allons voir ici les différentes techniques et syntaxes qui ont été ajoutées au langage pour faciliter l'utilisation de requêtes AJAX.
 
-Nous utiliserons [l'API Pokémon](https://pokeapi.co) qui permet d'obtenir des informations (très) détaillées sur les différents *pokémon* et autres éléments des jeux videos. On peut faire plusieurs types de requêtes à l'API. Nous utiliserons en particulier (les liens renvoient vers la documentation de l'API) :
+Nous utiliserons [l'API Pokémon](https://pokeapi.co) qui permet d'obtenir des informations (très) détaillées sur les différents *pokémon* et autres éléments des jeux videos. On peut faire plusieurs types de requêtes à l'API. Nous utiliserons en particulier (les liens renvoient vers la documentation de l'API, les exemples de réponses ne montrent qu'une partie des valeurs renvoyées, qui sont celles qui nous intéressent dans ce TD) :
 
 - [Pokemon](https://pokeapi.co/docs/v2#pokemon) : informations correspondant à un *pokémon* particulier (par nom ou numéro)
     - `https://pokeapi.co/api/v2/pokemon/{id or name}/`
@@ -98,6 +98,16 @@ Le but de ce TD est d'implémenter une fonctionnalité plus complexe qui, lorsqu
 
 **Remarque :** [Pour simplifier](https://xkcd.com/2587/), on n'affichera que le *pokémon* "par défaut" (attribut `is_default` vrai) de chaque espèce. Par contre on affichera toutes les espèces de l'arbre (cf. par exemple l'arbre d'évolutions de *eevee* et [les autres exemples ayant plusieurs branches d'évolution](https://bulbapedia.bulbagarden.net/wiki/List_of_Pokémon_with_branched_evolutions)).
 
+
+Étant donné un nom de *pokémon* (ou un *id*), il faut donc :
+- faire une requête sur le *pokémon* demandé
+- obtenir l'espèce du *pokémon* et faire une requête sur son espèce (on peut utiliser l'attribut `species.url` des données du *pokémon*)
+- obtenir la chaîne d'évolution de l'espèce (on peut utiliser l'attribut `evolution_chain.url` des données de l'espèce)
+- parcourir toutes les espèces dans l'arbre d'évolutions, et pour chaque espèce
+    - faire une requête pour obtenir les données de l'espèce
+    - trouver le *pokémon* par défaut en parcourant les éléments dans l'attribut `varieties` pour trouver celui qui a un attribut `is_default` vrai (vous pouvez aussi probablement prendre le premier élément dans `varieties`, même s'il n'est pas explicitement dit que c'est toujours celui par défaut)
+    - faire une requête pour obtenir les données de ce *pokémon*
+    - appeler la fonction `add()` définie dans le script `script-base.js` pour afficher la carte correspondante
 
 
 

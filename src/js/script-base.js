@@ -28,6 +28,15 @@ function add(data) {
 }
 
 
+function get_species_urls(evolution_link) {
+    const urls = evolution_link.species.url;
+    for (const link of evolution_link.evolves_to) {
+        urls.concatenate(get_species_urls(link));
+    }
+    return urls;
+}
+
+
 function getSearchInput() {
         let searchInput = document.getElementById('search-input').value;
         if (searchInput === '') {
