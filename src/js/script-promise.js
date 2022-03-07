@@ -4,10 +4,12 @@ function getData(url) {
         xhr.open('GET', url, true);
         xhr.onload = function () {
             if (xhr.status === 200) {
+                // la requête est terminée avec succès
                 const data = JSON.parse(xhr.responseText);
-                resolve(data);
+                resolve(data);  // la promesse est résolue
             } else {
-                reject(`${xhr.status}: ${xhr.responseText}`);
+                // erreur pendant la requête
+                reject(`${xhr.status}: ${xhr.responseText}`);   // promesse rejetée
             }
         }
         xhr.send();
@@ -15,34 +17,30 @@ function getData(url) {
 }
 
 
-function addEvolutionChain(name) {
-    getData(`${ROOT_URL}/pokemon/${name}/`)
+function addPokemon(nameOrIndex) {
+    getData(`${ROOT_URL}/pokemon/${nameOrIndex}/`)
+        .then(data => addPokemonCard(data))
+        .catch(error => console.log(error));
+}
+
+
+function addEvolutionChain(nameOrIndex) {
+    getData(`${ROOT_URL}/pokemon/${nameOrIndex}/`)
         .then(data => getData(data.species.url))
         .then(data => getData(data.evolution_chain.url))
-        .then(data => addChain(data.chain))
-        .catch(error => console.log(error));
-}
-
-function addChain(chain) {
-    getData(chain.species.url)
         .then(data => {
-            for (const variety of data.varieties) {
-                if (variety.is_default) {
-                    return getData(variety.pokemon.url);
-                }
-            }
-        })
-        .then(data => {
-            add(data);
-            for (const evolution of chain.evolves_to) {
-                addChain(evolution);
+            for (const url of getSpeciesUrls(data.chain)) {
+                getData(url)
+                    .then(data => {
+                        for (const variety of data.varieties) {
+                            if (variety.is_default) {
+                                return getData(variety.pokemon.url);
+                            }
+                        }
+                    })
+                    .then(data => addPokemonCard(data));
             }
         })
         .catch(error => console.log(error));
 }
 
-function addPokemon(name) {
-    getData(`${ROOT_URL}/pokemon/${name}/`)
-        .then(data => add(data))
-        .catch(error => console.log(error));
-}
