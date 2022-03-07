@@ -18,7 +18,7 @@ Nous utiliserons [l'API Pokémon](https://pokeapi.co) qui permet d'obtenir des i
 
 - [Pokemon](https://pokeapi.co/docs/v2#pokemon) : informations correspondant à un *pokémon* particulier (par nom ou numéro)
     - `https://pokeapi.co/api/v2/pokemon/{id or name}/`
-    ```json
+    ```
     {
         id: 6,
         is_default: true,
@@ -45,7 +45,7 @@ Nous utiliserons [l'API Pokémon](https://pokeapi.co) qui permet d'obtenir des i
 - [Pokemon Species](https://pokeapi.co/docs/v2#pokemon-species) : informations concernant une *espèce* de *pokémon*
     - `https://pokeapi.co/api/v2/pokemon-species/{id or name}/`
     - Il peut y avoir plusieurs *pokémon* de la même *espèce*. Par exemple l'espèce *charizard* correspond aux *pokémon* *charizard*, *charizard-mega-x*, *charizard-mega-y* et *charizard-gmax*
-    ```json
+    ```
     {
         evolution_chain: {url: "https://pokeapi.co/api/v2/evolution-chain/2/"},
         evolves_from_species: {url: "https://pokeapi.co/api/v2/evolution-chain/2/"},
@@ -68,7 +68,7 @@ Nous utiliserons [l'API Pokémon](https://pokeapi.co) qui permet d'obtenir des i
 - [Evolution Chains](https://pokeapi.co/docs/v2#evolution-chains) : informations concernant les arbres d'évolution des différentes espèces
     - `https://pokeapi.co/api/v2/evolution-chain/{id}/`
     - Représente un arbre d'espèces. Chaque nœud a un attribut `species` qui représente une espèce et un attribute `evolves_to` qui contient une liste des nœuds correspondant aux évolutions possibles de l'espèce (la liste est vide si l'espèce n'a pas d'évolution possible).
-    ```json
+    ```
     {
         id: 2,
         chain: {
