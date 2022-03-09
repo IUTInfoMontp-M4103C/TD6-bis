@@ -22,25 +22,3 @@ function addPokemon(nameOrIndex) {
         .then(data => addPokemonCard(data))
         .catch(error => console.log(error));
 }
-
-
-function addEvolutionChain(nameOrIndex) {
-    getData(`${ROOT_URL}/pokemon/${nameOrIndex}/`)
-        .then(data => getData(data.species.url))
-        .then(data => getData(data.evolution_chain.url))
-        .then(data => {
-            for (const url of getSpeciesUrls(data.chain)) {
-                getData(url)
-                    .then(data => {
-                        for (const variety of data.varieties) {
-                            if (variety.is_default) {
-                                return getData(variety.pokemon.url);
-                            }
-                        }
-                    })
-                    .then(data => addPokemonCard(data));
-            }
-        })
-        .catch(error => console.log(error));
-}
-
